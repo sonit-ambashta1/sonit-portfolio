@@ -45,7 +45,8 @@ jobs:
       - name: Start preview server
         run: |
           npm run preview &
-          npx wait-on http://127.0.0.1:5173 --timeout 30000
+          sleep 2
+          npx wait-on http://localhost:5173 --timeout 60000
         working-directory: ${{ env.WORKING_DIR }}
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
