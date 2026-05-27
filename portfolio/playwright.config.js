@@ -1,8 +1,8 @@
-module.exports = {
+export default {
   timeout: 30 * 1000,
   use: {
     headless: true,
-    baseURL: 'http://127.0.0.1:5173',
+    baseURL: 'http://localhost:5173',
     ignoreHTTPSErrors: true,
     video: 'retain-on-failure',
   },
