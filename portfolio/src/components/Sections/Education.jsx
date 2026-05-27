@@ -6,7 +6,7 @@ export default function Education() {
     <Section
       id="education"
       title="Education"
-      subtitle="B.S. in Computer Science (Expected 2027), Minor in Mathematics at The College of New Jersey"
+      subtitle="B.S. in Computer Science and Applied Mathematics (Expected 2027) at The College of New Jersey"
     >
       <div className="relative overflow-hidden rounded-xl border border-glass-border bg-glass-bg p-8 shadow-primary backdrop-blur-md">
         <h3 className="mb-8 text-center font-space-grotesk text-2xl font-bold text-primary">

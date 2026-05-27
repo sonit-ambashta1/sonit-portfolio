@@ -1,39 +1,123 @@
-name: Deploy
+name: CI/CD - Quality & Deploy
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  WORKING_DIR: ./portfolio
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
-  deploy:
+  qa-and-test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-
-      - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@master
+      - uses: actions/checkout@v4
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
         with:
-          args: --acl public-read --follow-symlinks --delete
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: "."
-      
-      - name: Invalidate CloudFront Cache
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: '${{ env.WORKING_DIR }}/package-lock.json'
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Prepare husky
+        run: npm run prepare || true
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Run format check
+        run: npm run format:check
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Run ESLint
+        run: npm run lint:eslint
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Run Stylelint
+        run: npm run lint:style
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Build
+        run: npm run build
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Start preview server
         run: |
-          aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-          aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-          aws configure set region $AWS_REGION
-
-          aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} \
-            --paths "/*"
+          npm run preview &
+          npx wait-on http://127.0.0.1:5173
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Run Playwright tests
+        run: npm run test:e2e
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Run A11y scan (axe)
+        run: npm run test:a11y
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Run LHCI
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_TOKEN || '' }}
+        run: npm run lhci || true
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Upload QA artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-reports
+          path: |
+            ${{ env.WORKING_DIR }}/reports/**
+            ${{ env.WORKING_DIR }}/reports/lhci/**
+            ${{ env.WORKING_DIR }}/reports/playwright-report/**
+
+  deploy:
+    needs: qa-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure AWS Credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: '${{ env.WORKING_DIR }}/package-lock.json'
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Build
+        run: npm run build
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Sync HTML files (no-cache)
+        run: |
+          aws s3 sync dist/ s3://${{ secrets.S3_BUCKET }} \
+            --exclude "*" --include "*.html" \
+            --cache-control "no-cache" \
+            --content-type "text/html; charset=utf-8" \
+            --metadata-directive REPLACE
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Sync assets (immutable cache) and remove deleted files
+        run: |
+          aws s3 sync dist/ s3://${{ secrets.S3_BUCKET }} \
+            --exclude "*.html" \
+            --cache-control "public, max-age=31536000, immutable" \
+            --metadata-directive REPLACE \
+            --delete
+        working-directory: ${{ env.WORKING_DIR }}
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CF_DISTRIBUTION_ID }} \
+            --paths "/index.html" "/"
+      - name: Upload deployment info
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: deployment-dist
+          path: ${{ env.WORKING_DIR }}/dist/
