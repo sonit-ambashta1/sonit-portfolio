@@ -103,8 +103,7 @@ img {
 
 /* Global text overflow prevention */
 * {
-  word-break: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 h1,
@@ -114,5 +113,5 @@ h4,
 h5,
 h6 {
   hyphens: auto;
-  word-break: break-word;
+  overflow-wrap: anywhere;
 }
