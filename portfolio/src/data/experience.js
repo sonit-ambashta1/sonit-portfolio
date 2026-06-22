@@ -1,30 +1,37 @@
 export const experience = [
   {
-    date: 'Jan 2025 - Present',
-    title: 'Machine Learning Researcher',
-    organization: 'The College of New Jersey',
-    description:
-      'Researching novel architectures for NLP models with focus on efficiency and interpretability. Collaborating with faculty on publications in top-tier conferences.',
-  },
-  {
-    date: 'Jun 2024 - Present',
-    title: 'Founder & Content Creator',
-    organization: 'The Coding Doge',
-    description:
-      'Creating educational content on software engineering and machine learning. Built community of 5K+ developers with tutorials on full-stack development and AI.',
-  },
-  {
-    date: 'Jun 2025 - Jul 2025',
-    title: 'Software Engineering Intern',
+    date: 'Jun 2026 – Present',
+    title: 'Software Engineer Intern',
     organization: 'Blink AI Payments',
     description:
-      'Developing cloud-native payment processing features using microservices architecture. Implementing fraud detection algorithms with real-time analytics.',
+      'Designing backend services for context-aware fraud detection using graph-based identity modeling over Neo4j.',
+    achievements: [
+      'Designed a command-dispatch backend service to route domain-specific functionality (account, customer, behavior) for fraud detection',
+      'Defined schema-driven interfaces and graph queries over Neo4j to construct identity profiles by traversing relationships between fraud-related entities',
+    ],
   },
   {
-    date: 'Apr 2024 - Present',
-    title: 'Webmaster',
-    organization: 'TCNJ Association for Computing Machinery',
+    date: 'Aug 2025 – Dec 2025',
+    title: 'Machine Learning Research Assistant',
+    organization: 'The College of New Jersey',
     description:
-      'Leading development of chapter website and internal tools. Organizing hackathons and technical workshops for 200+ student members.',
+      'Contributed to a shared ML experimentation codebase with focus on training efficiency, test coverage, and class imbalance analysis.',
+    achievements: [
+      'Implemented an early stopping criterion for text classification experiments, reducing unnecessary training iterations while preserving baseline accuracy',
+      'Authored 50+ unit and integration tests for a shared ML experimentation codebase, catching regressions across model variants during iterative development',
+      'Analyzed model performance under class imbalance, identifying tradeoffs between oversampling and weighted loss techniques',
+    ],
+  },
+  {
+    date: 'Jun 2025 – Aug 2025',
+    title: 'Software Engineer Intern',
+    organization: 'Blink AI Payments',
+    description:
+      'Built client-side features for a Suspicious Activity Report workflow, investigating submission failures and translating regulatory requirements into data constraints.',
+    achievements: [
+      'Implemented client-side state management for a multi-step SAR workflow, ensuring data integrity across submissions',
+      'Investigated SAR submission failures by tracing frontend payloads through API requests, surfacing validation errors caused by schema and field-level inconsistencies',
+      'Translated regulatory requirements into concrete data fields and submission constraints enforced across frontend and backend boundaries',
+    ],
   },
 ];

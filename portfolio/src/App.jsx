@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import Navbar from './components/Layout/Navbar';
 import Hero from './components/Sections/Hero';
+import About from './components/Sections/About';
 import Education from './components/Sections/Education';
 import Projects from './components/Sections/Projects';
 import Experience from './components/Sections/Experience';
@@ -36,12 +37,13 @@ function App() {
         Skip to content
       </a>
       {/* Background radial gradients */}
-      <div className="pointer-events-none fixed inset-0 z-[-2] bg-[radial-gradient(circle_at_10%_20%,rgba(2,238,255,0.08)_0%,transparent_25%),radial-gradient(circle_at_90%_80%,rgba(123,97,255,0.1)_0%,transparent_25%),radial-gradient(circle_at_50%_50%,rgba(2,238,255,0.05)_0%,transparent_35%)]" />
+      <div className="pointer-events-none fixed inset-0 z-[-2] bg-[radial-gradient(circle_at_10%_20%,rgba(79,70,229,0.06)_0%,transparent_25%),radial-gradient(circle_at_90%_80%,rgba(107,114,128,0.05)_0%,transparent_25%),radial-gradient(circle_at_50%_50%,rgba(79,70,229,0.04)_0%,transparent_35%)]" />
 
       <Navbar activeSection={activeSection} />
 
       <main className="pt-18">
         <Hero />
+        <About />
         <Education />
         <Projects />
         <Experience />

@@ -68,12 +68,12 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #02eeff, #7b61ff);
+  background: linear-gradient(135deg, #4f46e5, #6b7280);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #00c8d6, #6a52ff);
+  background: linear-gradient(135deg, #4338ca, #4b5563);
 }
 
 /* Print styles */

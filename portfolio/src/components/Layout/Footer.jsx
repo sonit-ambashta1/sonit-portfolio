@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-glass-border bg-gradient-to-br from-dark-bg2 to-dark-bg3 pb-6 pt-10">
       {/* Background radial gradient */}
-      <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle,rgba(123,97,255,0.08)_0%,transparent_70%)] opacity-30" />
+      <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle,rgba(79,70,229,0.05)_0%,transparent_70%)] opacity-30" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
         <motion.h2
@@ -27,8 +27,7 @@ export default function Footer() {
           className="mx-auto mb-8 max-w-2xl leading-relaxed text-text-secondary"
         >
           I&apos;m always open to discussing new projects, research
-          opportunities, and collaborations. Feel free to reach out through any
-          of my social channels or via email!
+          opportunities, and collaborations. Feel free to reach out!
         </motion.p>
 
         <div className="mb-8 flex justify-center gap-6">
@@ -80,7 +79,7 @@ export default function Footer() {
             key="email"
             aria-label="Send email"
             className="bg-white/8 flex h-12 w-12 items-center justify-center rounded-full border border-glass-border text-primary transition-all hover:bg-primary/15 hover:text-text-primary hover:shadow-glow"
-            href="sunnyambashta@gmail.com"
+            href="mailto:sunnyambashta@gmail.com"
             transition={{ delay: 0.4, duration: 0.8 }}
             viewport={{ once: true }}
             whileInView={{ opacity: 1, scale: 1 }}

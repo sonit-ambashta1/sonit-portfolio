@@ -22,6 +22,7 @@ export default function Experience() {
                 title={exp.title}
                 subtitle={exp.organization}
                 description={exp.description}
+                achievements={exp.achievements}
                 isEven={index % 2 === 1}
               />
             ))}

@@ -5,6 +5,7 @@ export default function TimelineItem({
   title,
   subtitle,
   description,
+  achievements = [],
   isEven = false,
 }) {
   return (
@@ -16,7 +17,7 @@ export default function TimelineItem({
 
       <motion.div
         whileHover={{ y: -5 }}
-        className="ml-0 overflow-hidden rounded-xl border border-glass-border bg-[rgba(25,27,60,0.7)] p-6 transition-all duration-300 hover:border-glass-highlight hover:shadow-secondary md:ml-8"
+        className="ml-0 overflow-hidden rounded-xl border border-glass-border bg-[rgba(16,19,31,0.5)] p-6 transition-all duration-300 hover:border-glass-highlight hover:shadow-secondary md:ml-8"
       >
         <div className="mb-2 break-words font-semibold text-primary">
           {date}
@@ -27,9 +28,28 @@ export default function TimelineItem({
         <div className="mb-4 break-words font-medium text-text-tertiary">
           {subtitle}
         </div>
-        <p className="break-words leading-relaxed text-text-secondary">
+        <p className="mb-4 break-words leading-relaxed text-text-secondary">
           {description}
         </p>
+
+        {achievements.length > 0 && (
+          <div className="space-y-2 border-t border-glass-border pt-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+              Key Achievements
+            </p>
+            <ul className="space-y-2">
+              {achievements.map((achievement, index) => (
+                <li
+                  key={index}
+                  className="flex gap-2 text-sm text-text-secondary"
+                >
+                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  <span>{achievement}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </motion.div>
     </div>
   );

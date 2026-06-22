@@ -5,6 +5,7 @@ import { clsx } from 'clsx';
 
 const navItems = [
   { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
   { id: 'education', label: 'Education' },
   { id: 'projects', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
@@ -29,8 +30,8 @@ export default function Navbar({ activeSection }) {
       className={clsx(
         'fixed left-0 top-0 z-50 w-full border-b border-glass-border transition-all duration-300',
         scrolled
-          ? 'h-16 bg-dark-bg2/95 shadow-primary backdrop-blur-md'
-          : 'bg-[#0a0c2e]/92 h-18 shadow-primary backdrop-blur-md'
+          ? 'h-16 bg-dark-bg2/95 shadow-lg shadow-primary/10 backdrop-blur-md'
+          : 'bg-dark-bg/92 h-18 shadow-lg shadow-primary/10 backdrop-blur-md'
       )}
     >
       <div className="mx-auto h-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -61,7 +62,7 @@ export default function Navbar({ activeSection }) {
                   className={clsx(
                     'relative cursor-pointer rounded-lg px-4 py-2 text-sm font-medium transition-all',
                     activeSection === item.id
-                      ? 'bg-primary/10 text-primary shadow-lg shadow-primary/20'
+                      ? 'bg-primary/10 text-primary shadow-md shadow-primary/15'
                       : 'text-text-primary hover:text-primary'
                   )}
                 >

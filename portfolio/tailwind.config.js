@@ -5,24 +5,24 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#02EEFF',
-          dark: '#00c8d6',
+          DEFAULT: '#4F46E5',
+          dark: '#4338CA',
         },
-        secondary: '#7B61FF',
+        secondary: '#6B7280',
         dark: {
-          bg: '#00033B',
-          bg2: '#0a0c2e',
-          bg3: '#15173a',
+          bg: '#0f1117',
+          bg2: '#10131f',
+          bg3: '#1a1e2e',
         },
         glass: {
-          bg: 'rgba(29, 31, 81, 0.75)',
-          border: 'rgba(2, 238, 255, 0.25)',
-          highlight: 'rgba(123, 97, 255, 0.15)',
+          bg: 'rgba(15, 17, 23, 0.4)',
+          border: 'rgba(79, 70, 229, 0.15)',
+          highlight: 'rgba(75, 85, 99, 0.1)',
         },
         text: {
           primary: '#ffffff',
-          secondary: '#b2ebf2',
-          tertiary: '#80deea',
+          secondary: '#d1d5db',
+          tertiary: '#9ca3af',
         },
       },
       fontFamily: {
@@ -47,9 +47,9 @@ export default {
         },
       },
       boxShadow: {
-        primary: '0 8px 32px rgba(2, 238, 255, 0.25)',
-        secondary: '0 4px 24px rgba(123, 97, 255, 0.2)',
-        glow: '0 0 20px rgba(2, 238, 255, 0.4)',
+        primary: '0 4px 16px rgba(79, 70, 229, 0.15)',
+        secondary: '0 2px 12px rgba(75, 85, 99, 0.1)',
+        glow: '0 0 12px rgba(79, 70, 229, 0.2)',
       },
     },
   },
