@@ -2,7 +2,7 @@ export const experience = [
   {
     date: 'Jun 2026 – Present',
     title: 'Software Engineer Intern',
-    organization: 'Blink AI Payments',
+    organization: 'Bliink AI',
     description:
       'Designing backend services for context-aware fraud detection using graph-based identity modeling over Neo4j.',
     achievements: [
@@ -25,12 +25,12 @@ export const experience = [
   {
     date: 'Jun 2025 – Aug 2025',
     title: 'Software Engineer Intern',
-    organization: 'Blink AI Payments',
+    organization: 'Bliink AI',
     description:
       'Built client-side features for a Suspicious Activity Report workflow, investigating submission failures and translating regulatory requirements into data constraints.',
     achievements: [
-      'Implemented client-side state management for a multi-step SAR workflow, ensuring data integrity across submissions',
       'Investigated SAR submission failures by tracing frontend payloads through API requests, surfacing validation errors caused by schema and field-level inconsistencies',
+      'Implemented client-side state management for a multi-step SAR workflow, ensuring data integrity across submissions',
       'Translated regulatory requirements into concrete data fields and submission constraints enforced across frontend and backend boundaries',
     ],
   },

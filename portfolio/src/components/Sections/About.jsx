@@ -4,10 +4,10 @@ import Section from '../UI/Section';
 
 export default function About() {
   const highlights = [
-    'Full-stack software engineer with expertise in AI/ML',
-    'Passionate about building intelligent systems that solve real-world problems',
-    'Strong foundation in cloud architecture and scalable system design',
-    'Proven track record of translating complex technical concepts into production solutions',
+    'Backend-focused software engineer building scalable, data-driven systems',
+    'Experience designing APIs, data workflows, and systems with strong correctness guarantees',
+    'Applied knowledge of machine learning and cloud deployment in real-world applications',
+    'Strong at debugging complex systems and translating requirements into reliable, production-ready solutions',
   ];
 
   return (
@@ -24,11 +24,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="mb-8 text-lg leading-relaxed text-text-secondary"
           >
-            I&apos;m a Computer Science student specializing in AI/ML and
-            full-stack development. I combine strong software engineering
-            fundamentals with cutting-edge machine learning techniques to build
-            scalable, intelligent systems. My passion lies in solving
-            challenging problems through innovative technology.
+            I’m a Computer Science and Applied Math student who builds backend systems and data-driven applications. My work focuses on designing scalable services, modeling data workflows, and ensuring system correctness, with additional experience in applied machine learning and cloud deployment.
           </motion.p>
 
           <div className="grid gap-4 md:grid-cols-2">

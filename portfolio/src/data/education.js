@@ -49,9 +49,4 @@ export const educationData = [
     title: 'Statistical Inference',
     link: 'https://mathstat.tcnj.edu/wp-content/uploads/sites/200/2026/01/STA-215.pdf',
   },
-  {
-    code: 'CSC 220',
-    title: 'AP Computer Science A',
-    link: 'https://apcentral.collegeboard.org/courses/ap-computer-science-a',
-  }
 ];

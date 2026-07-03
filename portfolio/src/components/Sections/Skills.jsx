@@ -18,11 +18,9 @@ export default function Skills() {
               skills={category.items.map((skill, index) => (
                 <div
                   key={index}
-                  className="flex min-h-12 w-full items-center justify-center rounded-lg border border-glass-border bg-[rgba(26,30,46,0.5)] px-3 py-2 text-center font-medium transition-all duration-200"
+                  className="inline-flex items-center justify-center whitespace-nowrap rounded-lg border border-glass-border bg-[rgba(26,30,46,0.5)] px-4 py-2 text-sm font-medium transition-all duration-200"
                 >
-                  <span className="break-words text-sm leading-tight">
-                    {skill}
-                  </span>
+                  {skill}
                 </div>
               ))}
             />

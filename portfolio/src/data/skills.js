@@ -9,6 +9,6 @@ export const skills = [
   },
   {
     category: 'Cloud & ML',
-    items: ['AWS', 'Vercel', 'Render', 'scikit-learn', 'HuggingFace'],
+    items: ['Vercel', 'Render', 'scikit-learn', 'HuggingFace Transformers'],
   },
 ];

@@ -11,9 +11,7 @@ export default function SkillCategory({ title, skills }) {
         <span className="absolute bottom-0 left-1/2 h-1 w-12 -translate-x-1/2 transform rounded-full bg-gradient-to-r from-primary to-secondary"></span>
       </h3>
 
-      <div className="grid grid-cols-2 gap-2">
-        {skills}
-      </div>
+      <div className="flex flex-wrap justify-center gap-2">{skills}</div>
     </motion.div>
   );
 }
