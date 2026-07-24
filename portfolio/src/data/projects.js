@@ -20,13 +20,13 @@ export const projects = [
     description:
       'An automobile diagnostic intelligence app that uses an On-Board Diagnostics II (OBD2) scanner to inform you about your car\'s data and suggest solutions to any issues.',
     problem:
-      'Vehicle diagnostics are often inaccessible to everyday drivers, requiring specialized tools and professional mechanics to interpret engine and system issues. While OBD-II scanners expose large amounts of vehicle telemetry and diagnostic trouble codes (DTCs), the information is rarely presented in a user-friendly or actionable format.',
+      'Vehicle diagnostic data is often difficult for drivers to access and interpret.',
     solution:
-      'Built a vehicle diagnostic platform that connects to an OBD-II scanner and streams real-time car telemetry to a web dashboard using WebSockets. The application aggregates vehicle statistics, visualizes system performance, and retrieves DTC codes to help users identify potential mechanical issues. The design also lays the foundation for AI-assisted diagnostics through Gemini-powered explanations and repair recommendations.',
+      'Built a platform that streams OBD-II telemetry and diagnostic codes to a real-time dashboard using WebSockets.',
     results:
-      'Successfully integrated OBD-II hardware with a full-stack application despite limited testing opportunities and hardware constraints. Achieved responsive real-time telemetry updates through WebSocket communication. Developed an interactive dashboard that visualizes vehicle health and diagnostic information in a more accessible format than raw scanner outputs. Established a framework for future AI-powered diagnosis and severity assessment of vehicle issues.',
+      'Successfully integrated automotive hardware with a full-stack application, providing responsive telemetry visualization and a foundation for future AI-assisted diagnostics.',
     technologies: ['Python', 'HuggingFace', 'DistilBERT', 'scikit-learn'],
-    image: '/projects/task-prioritization.png',
+    image: '/projects/car-tools.png',
     link: 'https://github.com/csdoge22/RockPebbleStoneSite',
   },
   {
@@ -57,6 +57,6 @@ export const projects = [
       'Reduced lyric synchronization effort from a fully manual process to a largely automated pipeline, with manual timing corrections needed only for rare alignment anomalies.',
     technologies: ['Python', 'Librosa', 'Matplotlib', 'FFmpeg'],
     image: '/projects/swar-perfect.png',
-    link: 'https://github.com/sonit-ambashta1',
+    link: 'https://www.youtube.com/@SudhakerAV/videos',
   },
 ];

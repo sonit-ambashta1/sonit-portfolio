@@ -30,9 +30,7 @@ export default function Hero() {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="mx-auto mb-12 max-w-2xl text-xl leading-relaxed text-text-secondary md:text-2xl"
         >
-          Computer Science student specializing in AI/ML, cloud architecture,
-          and full-stack development. Passionate about building intelligent
-          systems that solve real-world problems.
+          Computer Science and Applied Mathematics student focused on backend software engineering, data-driven systems, and machine learning applications. Passionate about building reliable software and understanding how complex systems work behind the scenes.
         </motion.p>
 
         <motion.div
